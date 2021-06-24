@@ -3,6 +3,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const clothesModel = require('./clothes/model.js');
 const foodModel = require('./food/model.js');
+const userModel = require('./users/users.js');
 const Collection = require('./data-collection.js');
 
 const DATABASE_URL = process.env.DATABASE_URL || 'sqlite:memory:';
@@ -15,4 +16,7 @@ module.exports = {
   db: sequelize,
   food: new Collection(food),
   clothes: new Collection(clothes),
+  users: userModel(sequelize, DataTypes),
 };
+
+// this should have the required index files from auth-server/models/index in it. 
